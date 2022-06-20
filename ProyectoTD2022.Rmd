@@ -48,77 +48,7 @@ language:
 
 Este documento explicativo te puede servir de plantilla para la realización de proyectos con *Rmarkdown* para la realizacón de memorias de práctica, tareas, etc. Pretende ser autoexplicativo.
 
-# Estructura del fichero
-
-El bloque inicial separado entre 3 guiones, se denomina cabecera YALM y determina el formato y tipo de documento generado Las opciones dependen del tipo de documento. Un documento que te ayudará a opciones más complejas lo puedes encontrar en este enlace <https://bookdown.org/yihui/rmarkdown/>
-
-**NOTA**: Los espacios iniciales son imprescindibles. El documento debe empezar por los guiones (no puede haber comentarios previos)
-
-**title**: "Pon un título a tu documento"\
-**subtitle**: Tratamiento de Datos. Grado en Ciencia de Datos- UV\
-**author**: "Pon aquí tu nombre y apellidos"
-
-Pone la fecha de generación del documento
-
-**date**: "`r Sys.Date()`" Pondría la fecha del día actual. También se puede poner fija "01/02/2021"
-
-Cambio de idioma para que en lugar de "Contents" ponga "Indice" al incluir la tabla de contenido
-
-**params**: **lang**: ES\
-**lang**: "`r switch(params$lang, ES = 'es-ES', EN = 'en-US')`"
-
-En este ejemplo, por defecto se generará un salida html, que es la que está descomentada. Si si quieres otras salidas o varias de ellas descomenta lo que proceda
-
-**output:** Salida(s) generadas
-
-[*Salida pdf*]{.ul}*. Si se incluye código en LaTex necesitarás tener instalado un compilador de Latex*\
-**pdf_document**:\
-**toc**: yes Tabla de contenido (índice)\
-**toc_depth**: 3 Número de niveles de la tabla de contenido (índice) \# 1, \#\#2,\#\#\#3\
-**number_sections**: yes Numeración de las secciones
-
-[Salida html_document]{.ul}:\
-**echo**: yes **number_sections**: yes\
-**theme**: lumen Aspecto y estilo. Otras opciones: *cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti*\
-**toc**: yes
-
-[*Salida html_notebook*]{.ul}*, como html, pero con algunas opciones de visualización*
-
-Las opciones siguientes nos permite traducir estas etiquetas para que aparezcan en otro idioma en caso de que se usen en el documento para referenciar a figuras, tablas, etc.
-
-**language:**\
-**label:** **fig:** 'Figura '\
-**tab:** 'Tabla '\
-**eq:** 'Ecuación '\
-**thm:** 'Teorema '\
-**lem:** 'Lema '\
-**def:** 'Definición '\
-**cor:** 'Corolario '\
-**prp:** 'Proposición '\
-**exm:** 'Ejemplo '\
-**exr:** 'Ejercicio '\
-**proof:** 'Demostración. '\
-**remark:** 'Nota: '\
-**solution:** 'Solución. '
-
 # Configuración del los bloques (*Chunks*)
-
-Cada bloque tiene muchos parámetros que pueden ser configurados
-
-**include** = **FALSE** evita que el código y los resultados aparezcan en el archivo terminado. R Markdown aún ejecuta el código en el fragmento y los resultados pueden ser utilizados por otros fragmentos.
-
-**echo = FALSE** evita que el código, pero no los resultados, aparezcan en el archivo terminado. Esta es una manera útil de incrustar figuras.
-
-**message = FALSE** evita que los mensajes generados por el código aparezcan en el archivo finalizado.
-
-**warning = FALSE** evita que las advertencias generadas por el código aparezcan en el final.
-
-**fig.cap = "..."** agrega un título a los resultados gráficos.
-
-Se pueden especificicar opciones generales por defecto en *opts_chunk\$set*
-
-Más opciones en el enlace [\<https://bookdown.org/yihui/rmarkdown/\>](https://bookdown.org/yihui/rmarkdown/){.uri}
-
 ```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
 
 
@@ -171,34 +101,33 @@ search()
 
 # Información
 
-**‘data/Sueca_Esq_Denia.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Sueca Esq. Denia
+**'data/Sueca_Esq_Denia.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Sueca Esq. Denia
 
-**‘data/Cadiz_16.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Cádiz, 16
+**'data/Cadiz_16.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Cádiz, 16
 
-**‘data/Cadiz_3.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Cádiz, 3
+**'data/Cadiz_3.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Cádiz, 3
 
-**‘data/Cuba_3.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Cuba, 3
+**'data/Cuba_3.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Cuba, 3
 
-**‘data/Sueca_2.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Sueca, 2
+**'data/Sueca_2.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Sueca, 2
 
-**‘data/Sueca_61.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Sueca, 61
+**'data/Sueca_61.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Sueca, 61
 
-**‘data/Sueca_32.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Sueca, 32
+**'data/Sueca_32.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Sueca, 32
 
-**‘data/Carles_Cervera_Chaflan_Reina_Donya_Maria.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Carles Cervera, Chaflán Reina Doña María
+**'data/Carles_Cervera_Chaflan_Reina_Donya_Maria.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Carles Cervera, Chaflán Reina Doña María
 
-**‘data/Salvador_Abril_Chaflan_Maestro_Jose_Serrano.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Salvador Abril Chaflán Maestro José Serrano
+**'data/Salvador_Abril_Chaflan_Maestro_Jose_Serrano.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Salvador Abril Chaflán Maestro José Serrano
 
-**‘data/Vivons_Chaflan_Cadiz.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Vivons Chaflán Cádiz
+**'data/Vivons_Chaflan_Cadiz.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Vivons Chaflán Cádiz
 
-**‘data/Carles_Cervera_34.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Carles Cervera, 34
+**'data/Carles_Cervera_34.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Carles Cervera, 34
 
-**‘data/Puerto_Rico_21.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Puerto Rico, 21
+**'data/Puerto_Rico_21.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Puerto Rico, 21
 
-**‘data/Doctor_Serrano_21.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Doctor Serrano, 21
+**'data/Doctor_Serrano_21.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle Doctor Serrano, 21
 
-**‘data/General_Prim_Chaflan_Donoso_Cortes.csv’** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle General Prim Chaflán Donoso Cortés
-
+**'data/General_Prim_Chaflan_Donoso_Cortes.csv'** : Datos diarios del sensor de ruido ubicado en el barrio de Ruzafa, en la calle General Prim Chaflán Donoso Cortés
 
 # Apertura de ficheros
 
@@ -235,7 +164,6 @@ Sueca_Esq_Denia <- read_csv("data/Sueca_Esq_Denia.csv")
 Vivons_Chaflan_Cadiz <- read_csv("data/Vivons_Chaflan_Cadiz.csv")
 
 ```
-
 
 # Preparacion de los datos
 
@@ -313,10 +241,10 @@ Fusionamos todos los dataframes para trabajar cómodamente con los datos.
 
 Después de fusionarlo, eliminamos las columnas prescindibles, estas son:
 
-- _id, que no aporta ninguna información\
-- recvTime, que no aporta ninguna información\
-- fiwareServicePath, que en todas las filas tiene el mismo valor (/sonometros)\
-- entityType, que en todas las filas tiene el mismo valor (NoiseLevelObserved)\
+-   \_id, que no aporta ninguna información\
+-   recvTime, que no aporta ninguna información\
+-   fiwareServicePath, que en todas las filas tiene el mismo valor (/sonometros)\
+-   entityType, que en todas las filas tiene el mismo valor (NoiseLevelObserved)\
 
 ```{r, echo = TRUE, message = FALSE, warning = FALSE, tidy = FALSE}
 df <- rbind(Cadiz_3t, Cadiz_16t, Carles_Cervera_34t, Carles_Cervera_Chaflan_Reina_Donya_Mariat, Cuba_3t, Doctor_Serrano_21t, General_Prim_Chaflan_Donoso_Cortest, Puerto_Rico_21t, Salvador_Abril_Chaflan_Maestro_Jose_Serranot, Sueca_2t, Sueca_32t, Sueca_61t, Sueca_Esq_Deniat, Vivons_Chaflan_Cadizt)
@@ -337,12 +265,11 @@ dff <- dff %>% mutate(Place = as.factor(Place), entityId = as.factor(entityId), 
 
 Después de todos estos cambios, tenemos com resultado un dataset con las siguientes variables:
 
--**Place**, Lugar de medición\
+\-**Place**, Lugar de medición\
 -**entityld**, Identificador único del sensor en la plataforma VLCi\
 -**dateObserved**, Día al que se refieren las medidas\
 -**Ruido**, Tipo de ruido que se mide\
 -**Valor**, Valor del ruido que se mide\
-
 
 # Valores perdidos
 
@@ -357,14 +284,12 @@ Podemos ver en el grafico que hay 0 valores perdidos en la columna de valor.
 ```{r}
 sum(is.na(dff$Valor))
 ```
-Otra forma de calcular los NA es hacer un sumatorio de NAs por columnas.
-Observamos que no hay valores perdidos en la toma de datos, asumiendo que si los existiera, correspondría con dias en los que no se han tomado las medidas de contaminacion acústica.
 
+Otra forma de calcular los NA es hacer un sumatorio de NAs por columnas. Observamos que no hay valores perdidos en la toma de datos, asumiendo que si los existiera, correspondría con dias en los que no se han tomado las medidas de contaminacion acústica.
 
 # Utilidad de los datos
 
-Teniendo la informacion toda compacta podemos plantearnos una serie de preguntas. El objetivo de esto es tener informacion más fiable sobre la pregunta en particular.
-Usaremos funciones de la libreria dpylr para obtener la informacion que nos complazca para responder a las preguntas
+Teniendo la informacion toda compacta podemos plantearnos una serie de preguntas. El objetivo de esto es tener informacion más fiable sobre la pregunta en particular. Usaremos funciones de la libreria dpylr para obtener la informacion que nos complazca para responder a las preguntas
 
 Pero antes, definiremos un vector de los ruidos que utilizaremos en nuestro análisis
 
@@ -373,17 +298,40 @@ ruidos = unique(dff$Ruido)
 ruidos = c("LAeq", "LAeq_d", "LAeq_n", "LAeq_e", "LAeq_den")
 ```
 
-Correspondiendo cada uno de ellos con: 
+Correspondiendo cada uno de ellos con:
 
--**LAeq**: Nivel sonoro continuo equivalente. En este caso el período establecido para este sensor es de 1 minuto.\
+\-**LAeq**: Nivel sonoro continuo equivalente. En este caso el período establecido para este sensor es de 1 minuto.\
 
--**LAeq_d**: Es un indicador de ruido asociado al día.\
+\-**LAeq_d**: Es un indicador de ruido asociado al día.\
 
--**LAeq_e**: Es un indicador del nivel sonoro durante la tarde.\
+\-**LAeq_e**: Es un indicador del nivel sonoro durante la tarde.\
 
--**LAeq_n**: Es un indicador del nivel sonoro durante la noche.\
+\-**LAeq_n**: Es un indicador del nivel sonoro durante la noche.\
 
--**LAeq_den**: índice de ruido día-tarde-noche, es utilizado para determinar la molestia vinculada a la exposición al ruido.\
+\-**LAeq_den**: índice de ruido día-tarde-noche, es utilizado para determinar la molestia vinculada a la exposición al ruido.\
+
+# Valores extraños
+
+Para un mejor análisi de los datos necesitamos saber si existen datos extraños, es decir que su valor no concuerda con el tipo de dato que se esta analizando
+
+```{r}
+summary(dff)
+
+# Cambiamos el valor Inf de la variable Valor por el máximo valor de esta variable
+
+valor <- dff %>% arrange(desc(Valor)) %>% select(Valor)
+valor[1:10,]
+maxim <- 97.4
+
+for (i in 1:dim(dff)[1]){
+  if (dff[i, 'Valor'] == Inf){
+    dff[i, 'Valor'] <- maxim
+  }
+}
+
+summary(dff)
+# Los valores Inf han sido sustituidos
+```
 
 
 # Respondiendo preguntas...
@@ -395,9 +343,8 @@ MesContaminante <- dff %>% filter(Ruido %in% ruidos) %>% separate(dateObserved, 
 
 MesContaminante %>% ggplot(aes(x = Mes, y = Valor, fill = Mes)) + geom_boxplot() + labs(title = paste0("Densidad del ruido ",sep="")) + facet_wrap(~Ruido, scales = "free")
 ```
-Podemos ver en cada grafica un indicador de ruido diferente para hacer el estudio del mes con más volumen de ruido en la ciudad de Valencia, en las diferentes zonas con medidores de contaminación acústica.
-En relación a todos los indicadores de ruido, por minuto, en días, tardes y noches, se observa que el mes en el que más contaminación acústica tiene la ciudad es Marzo, coincidiendo con la festividad de Fallas, que conlleva actos multitudinarios, pirotécnias y música en altos niveles.
 
+Podemos ver en cada grafica un indicador de ruido diferente para hacer el estudio del mes con más volumen de ruido en la ciudad de Valencia, en las diferentes zonas con medidores de contaminación acústica. En relación a todos los indicadores de ruido, por minuto, en días, tardes y noches, se observa que el mes en el que más contaminación acústica tiene la ciudad es Marzo, coincidiendo con la festividad de Fallas, que conlleva actos multitudinarios, pirotécnias y música en altos niveles.
 
 ##¿Que estación del año es en la que menos se contamina?
 
@@ -425,7 +372,6 @@ amd %>% arrange(desc(Valor)) %>% head()
 
 amd <- amd %>% filter(Valor != Inf)
 ```
-
 
 ```{r}
 amd %>% group_by(Estacion) %>% summarize(Media = mean(Valor, na.rm = T)) %>% 
