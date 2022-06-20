@@ -367,10 +367,6 @@ for (i in 1:dim(amd[1])){
     }
   }
 }
-amd %>% arrange(desc(Valor)) %>% head()
-# Suprimimos los datos erroneos
-
-amd <- amd %>% filter(Valor != Inf)
 ```
 
 ```{r}
@@ -399,8 +395,26 @@ g2022 <- amd %>%
   ggplot(aes(x = Estacion, y = m, fill = Estacion)) + geom_bar(stat = 'identity') + ggtitle('Media dB 2022')
 
 g2020 + g2021 + g2022
-
-filter(amd, Valor > quantile(amd$Valor, prob = 0.999))
 ```
 
 Como podemos ver, en líneas generales todas la estaciones suelen tener una media de ruido parecida estando el verano un escalón por encima. Algo también a destacar es la disparidad que encontramos en el año 2021 donde el ruido captado en verano es mayor que en el resto de estaciones esto es debido a que en 2021 las fallas se celebraron a principios de septiembre.
+
+## ¿En qué calle es mas alto el ruido?
+```{r}
+g1 <- dff %>%
+  group_by(Place) %>% 
+  summarise(maximo = max(Valor), media = mean(Valor), minimo = min(Valor)) %>%
+  gather(key = 'Tipo', value = 'Valor', maximo, media, minimo) %>% 
+  ggplot(aes(x = Place, y = Valor, by = Tipo, color = Tipo)) + geom_point(stroke = 5)
+
+
+
+g1 + geom_hline(yintercept = 55, col = 'blue') + geom_hline(yintercept = 75, col = 'red') + 
+  annotate(geom = "text", x = 'Sueca esq Denia', y = 76,label = "Peligro para la salud",size = 8) +
+  annotate(geom = "text", x = 'Sueca esq Denia', y = 56,label = "Tolerable para habitar",size = 8)
+
+ggsave(filename = 'Calles.jpg', width = 18, height = 10)
+```
+Podemos observar que `Cadiz 13`, `Carles Cervera Chaflan` y `Salvador Abril` son las calles con mayor màximo de ruido y que la calle `Sueca 2` es la menos ruidosa y aque ni en su máximo supera la linea de peligrosidad.
+
+
