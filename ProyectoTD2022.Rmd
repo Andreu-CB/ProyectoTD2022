@@ -82,7 +82,7 @@ El siguiente bloque, al no especificar opciones del *chunk* usa la configuració
 
 # Especificamos las librerías necesarias en esta lista
 
-packages = c('tidyverse', 'knitr', 'dplyr', 'tidyr', 'VIM', 'patchwork')
+packages = c('tidyverse', 'knitr', 'dplyr', 'tidyr', 'VIM', 'patchwork', 'lubridate')
 
 #use this function to check if each package is on the local machine
 #if a package is installed, it will be loaded
@@ -399,7 +399,7 @@ g2020 + g2021 + g2022
 
 Como podemos ver, en líneas generales todas la estaciones suelen tener una media de ruido parecida estando el verano un escalón por encima. Algo también a destacar es la disparidad que encontramos en el año 2021 donde el ruido captado en verano es mayor que en el resto de estaciones esto es debido a que en 2021 las fallas se celebraron a principios de septiembre.
 
-## ¿En qué calle es mas alto el ruido?
+## ¿En qué calles hay mas ruido?
 ```{r}
 g1 <- dff %>%
   group_by(Place) %>% 
@@ -416,5 +416,26 @@ g1 + geom_hline(yintercept = 55, col = 'blue') + geom_hline(yintercept = 75, col
 ggsave(filename = 'Calles.jpg', width = 18, height = 10)
 ```
 Podemos observar que `Cadiz 13`, `Carles Cervera Chaflan` y `Salvador Abril` son las calles con mayor màximo de ruido y que la calle `Sueca 2` es la menos ruidosa y aque ni en su máximo supera la linea de peligrosidad.
+
+
+## ¿Como es el ruido segun el dia de la semana?
+```{r}
+dfff <- dff %>% 
+  mutate(DiaSem = wday(as.Date(dateObserved), label = T, abbr = F))
+
+g2 <- dfff %>% 
+  group_by(DiaSem) %>% 
+  summarise(maximo = max(Valor), media = mean(Valor), minimo = min(Valor)) %>%
+  gather(key = 'Tipo', value = 'Valor', maximo, media, minimo) %>% 
+  ggplot(aes(x = DiaSem, y = Valor, by = Tipo, color = Tipo)) + geom_point(stroke = 5)
+
+g2 + geom_hline(yintercept = 55, col = 'blue') + geom_hline(yintercept = 75, col = 'red') + 
+  annotate(geom = "text", x = 'viernes', y = 77,label = "Peligro para la salud",size = 8) +
+  annotate(geom = "text", x = 'viernes', y = 57,label = "Tolerable para habitar",size = 8)
+
+ggsave(filename = 'Dias.jpg', width = 10, height = 6)
+```
+
+
 
 
