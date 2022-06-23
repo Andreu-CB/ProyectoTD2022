@@ -437,5 +437,34 @@ ggsave(filename = 'Dias.jpg', width = 10, height = 6)
 ```
 
 
+## Fallas
+```{r}
+for (i in 1:dim(amd)[1]){
+  if ((amd[i, 'Anyo'] == 2022 & amd[i, 'Mes'] == 03 & amd[i, 'Dia'] == 15) | (amd[i, 'Anyo'] == 2021 & amd[i, 'Mes'] == 09 & amd[i, 'Dia'] == 01)){
+    amd[i, 'Fallas'] <- 'Dia1'
+  } else {
+    if ((amd[i, 'Anyo'] == 2022 & amd[i, 'Mes'] == 03 & amd[i, 'Dia'] == 16) | (amd[i, 'Anyo'] == 2021 & amd[i, 'Mes'] == 09 & amd[i, 'Dia'] == 02)){
+      amd[i, 'Fallas'] <- 'Dia2'
+    } else {
+      if ((amd[i, 'Anyo'] == 2022 & amd[i, 'Mes'] == 03 & amd[i, 'Dia'] == 17) | (amd[i, 'Anyo'] == 2021 & amd[i, 'Mes'] == 09 & amd[i, 'Dia'] == 03)){
+        amd[i, 'Fallas'] <- 'Dia3'
+      } else {
+        if ((amd[i, 'Anyo'] == 2022 & amd[i, 'Mes'] == 03 & amd[i, 'Dia'] == 18) | (amd[i, 'Anyo'] == 2021 & amd[i, 'Mes'] == 09 & amd[i, 'Dia'] == 04)){
+          amd[i, 'Fallas'] <- 'Dia4'
+        } else {
+          if ((amd[i, 'Anyo'] == 2022 & amd[i, 'Mes'] == 03 & amd[i, 'Dia'] == 19) | (amd[i, 'Anyo'] == 2021 & amd[i, 'Mes'] == 09 & amd[i, 'Dia'] == 05)){
+            amd[i, 'Fallas'] <- 'Dia5'
+          } else {
+            res <- NA
+          }
+        }
+      }
+    }
+  }
+}
 
+fallas <- amd %>% 
+  filter(!is.na(Fallas)) %>% 
+  filter(Ruido == 'LAeq_d' | Ruido == 'LAeq_e' | Ruido == 'LAeq_n' )
 
+```
