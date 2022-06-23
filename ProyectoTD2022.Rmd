@@ -465,6 +465,19 @@ for (i in 1:dim(amd)[1]){
 
 fallas <- amd %>% 
   filter(!is.na(Fallas)) %>% 
-  filter(Ruido == 'LAeq_d' | Ruido == 'LAeq_e' | Ruido == 'LAeq_n' )
+  filter(Ruido == 'LAeq_d' | Ruido == 'LAeq_e' | Ruido == 'LAeq_n')
 
 ```
+
+## Analisis sonido respecto franja horaria
+```{r}
+nivel <- dff %>% 
+  mutate(Nivel = ifelse(Valor < 45, 'Bajo', ifelse(Valor > 65, 'Alto', 'Medio'))) %>% 
+  filter(Ruido == 'LAeq_d' | Ruido == 'LAeq_e' | Ruido == 'LAeq_n')
+
+tbl <- table(nivel$Nivel, nivel$Ruido)[, c('LAeq_d', 'LAeq_e', 'LAeq_n')]
+mosaicplot(tbl, color = c('skyblue','blue', 'darkblue'))
+
+chisq.test(nivel$Ruido, nivel$Nivel)
+```
+
