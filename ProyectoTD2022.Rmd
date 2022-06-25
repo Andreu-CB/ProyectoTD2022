@@ -402,7 +402,7 @@ Como podemos ver, en líneas generales todas la estaciones suelen tener una medi
 ## Analisis sonido respecto franja horaria
 ```{r}
 nivel <- dff %>% 
-  mutate(Nivel = ifelse(Valor < 45, 'Bajo', ifelse(Valor > 65, 'Alto', 'Medio'))) %>% 
+  mutate(Nivel = ifelse(Valor < 55, 'Bajo', ifelse(Valor > 75, 'Alto', 'Medio'))) %>% 
   filter(Ruido == 'LAeq_d' | Ruido == 'LAeq_e' | Ruido == 'LAeq_n')
 
 tbl <- table(nivel$Nivel, nivel$Ruido)[, c('LAeq_d', 'LAeq_e', 'LAeq_n')]
@@ -447,7 +447,7 @@ g2 + geom_hline(yintercept = 55, col = 'blue') + geom_hline(yintercept = 75, col
 
 ggsave(filename = 'Dias.jpg', width = 10, height = 6)
 ```
-
+Como vemos ningún dia de la semana tiene una media de ruido inferior a la tolerables para habitar y también observamos que las màximas de lunes y martes són muy inferiores al resto 
 
 ## Fallas
 ```{r}
@@ -483,9 +483,10 @@ amd %>%
   unite('Dia_Ruido', Fallas, Ruido, sep = '_') %>% 
   gather(key = Tipo, value = Valor, maximo, media, minimo) %>% 
   ggplot(aes(x = Dia_Ruido, y = Valor, fill = Anyo)) + geom_histogram(stat = 'identity', position = 'dodge') +
-  facet_wrap(~Tipo, ncol = 1)
+  facet_wrap(~Tipo, ncol = 3) +
+  scale_x_discrete(labels = c('M1', 'T1', 'N1', 'M2', 'T2', 'N2', 'M3', 'T3', 'N3', 'M4', 'T4', 'N4', 'M5', 'T5', 'N5'))
 
-ggsave(filename = 'FAllas.jpg', width = 16, height = 10)
+ggsave(filename = 'Fallas.jpg', width = 15, height = 10)
 ```
-
+Vemos que en líneas generals las fallas de 2022 fueron mas ruidosas que las de 2021
 
