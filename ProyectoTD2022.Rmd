@@ -265,7 +265,7 @@ dff <- dff %>% mutate(Place = as.factor(Place), entityId = as.factor(entityId), 
 
 Después de todos estos cambios, tenemos com resultado un dataset con las siguientes variables:
 
-\-**Place**, Lugar de medición\
+-**Place**, Lugar de medición\
 -**entityld**, Identificador único del sensor en la plataforma VLCi\
 -**dateObserved**, Día al que se refieren las medidas\
 -**Ruido**, Tipo de ruido que se mide\
@@ -489,4 +489,3 @@ amd %>%
 ggsave(filename = 'Fallas.jpg', width = 15, height = 10)
 ```
 Vemos que en líneas generals las fallas de 2022 fueron mas ruidosas que las de 2021
-
